@@ -1,0 +1,47 @@
+<!doctype html>
+<!--
+	Yarno Boelens
+	Character Creator
+	created on: 2-7-2016
+-->
+
+<html>
+    <head>
+        <title>Character Creator</title>
+        <meta name="description" content="A character customizer">
+        <meta name="keywords" content="Character, Creator, Customizer">
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+    </head>
+    <body>
+        <div id="page-wrapper">
+            <div id="color-buttons">
+                <!--<div id="skin-color">
+                    <button id="skin-color-left" onclick="change(skinColor, left)">Left</button>
+                    <p>Skin Color</p>
+                    <button id="skin-color-right" onclick="change(skinColor, right)">right</button>
+                </div>-->
+                <div id="hair-color">
+                    <button id="hair-color-left" onclick="change('Head_Color', 'left')">Left</button>
+                    <p>Hair Color</p>
+                    <button id="hair-color-right" onclick="change('Head_Color', 'right')">Right</button>
+                </div>
+                <div id="chest-color">
+                    <button id="chest-color-left" onclick="change('Chest_Color', 'left')">Left</button>
+                    <p>Chest Color</p>
+                    <button id="chest-color-right" onclick="change('Chest_Color', 'right')">Right</button>
+                </div>
+                <div id="legs-color">
+                    <button id="legs-color-left" onclick="change('Legs_Color', 'left')">Left</button>
+                    <p>Legs Color</p>
+                    <button id="legs-color-right" onclick="change('Legs_Color', 'right')">Right</button>
+                </div>
+            </div>
+            <div id="character">
+                <img id="head" src="sprites/head/1-blonde-1.png"><br>
+                <img id="chest" src="sprites/chest/1-white-1.png"><br>
+                <img id="legs" src="sprites/legs/1-blue-1.png"><br>
+            </div>
+        </div>
+        <script src="js/main.js"></script>
+    </body>
