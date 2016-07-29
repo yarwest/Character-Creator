@@ -24,3 +24,7 @@ p {
 #chest, #legs {
     margin-top: -5px;
 }
+
+.left {
+    display: none;
+}
