@@ -23,221 +23,24 @@ function assignSource () {
 }
 
 function change(object, change, direction) {
-    var lowcaseSplit = object.toLowerCase();
+    var lowcaseObject = object.toLowerCase();
     var variable = "current" + object + change;
     if(direction === 'left') {
-        eval(variable + "--");
+        eval("if(" + variable + " === 0) { " + variable + " = " + lowcaseObject + change + ".length-1;} else { " + variable + "--;}");
     } else if(direction === 'right') {
-        eval(variable + "++");
+        eval("if(" + variable + " === " + lowcaseObject + change + ".length-1) { " + variable + " = 0;} else { " + variable + "++;}");
     }
-    if(lowcaseSplit === 'skin') {
+    if(lowcaseObject === 'skin') {
         assignSource();
     }
     else {
-        var type = eval(lowcaseSplit + "Type[current" + object + "Type]");
-        var color = eval(lowcaseSplit + "Color[current" + object + "Color]");
+        var type = eval(lowcaseObject + "Type[current" + object + "Type]");
+        var color = eval(lowcaseObject + "Color[current" + object + "Color]");
         var skin = skinColor[currentSkinColor];
-        document.getElementById(lowcaseSplit + '-img').src='sprites/' + lowcaseSplit + '/' + type + '-' + color + '-' + skin + '.png';
+        document.getElementById(lowcaseObject + '-img').src='sprites/' + lowcaseObject + '/' + type + '-' + color + '-' + skin + '.png';
     }
-    boundaryCheck(object, change, direction);
 }
 
-function boundaryCheck(object, change, direction) {
-    if(object === 'Head') {
-        if(change === 'Color') {
-            if(direction === 'left') {
-                if(currentHeadColor === 0) {
-                    document.getElementById('head-color-left').style.display="none";
-                }
-                document.getElementById('head-color-right').style.display="inline-block";
-            }
-            else {
-                if (currentHeadColor === headColor.length-1) {
-                    document.getElementById('head-color-right').style.display="none";
-                }
-                document.getElementById('head-color-left').style.display="inline-block";
-            }
-        }
-        else if (change === 'Type') {
-            if(direction === 'left') {
-                if(currentHeadType === 0) {
-                    document.getElementById('head-type-left').style.display="none";
-                }
-                document.getElementById('head-type-right').style.display="inline-block";
-            }
-            else {
-                if(currentHeadType === headType.length-1) {
-                    document.getElementById('head-type-right').style.display="none";
-                }
-                document.getElementById('head-type-left').style.display="inline-block";
-            }
-        }
-    }
-    if(object === 'Chest') {
-        if(change === 'Color') {
-            if(direction === 'left') {
-                if(currentChestColor === 0) {
-                    document.getElementById('chest-color-left').style.display="none";
-                }
-                document.getElementById('chest-color-right').style.display="inline-block";
-            }
-            else {
-                if (currentChestColor === chestColor.length-1) {
-                    document.getElementById('chest-color-right').style.display="none";
-                }
-                document.getElementById('chest-color-left').style.display="inline-block";
-            }
-        }
-        else if (change === 'Type') {
-            if(direction === 'left') {
-                if(currentChestType === 0) {
-                    document.getElementById('chest-type-left').style.display="none";
-                }
-                document.getElementById('chest-type-right').style.display="inline-block";
-            }
-            else {
-                if(currentChestType === chestType.length-1) {
-                    document.getElementById('chest-type-right').style.display="none";
-                }
-                document.getElementById('chest-type-left').style.display="inline-block";
-            }
-        }
-    }
-    if(object === 'Legs') {
-        if(change === 'Color') {
-            if(direction === 'left') {
-                if(currentLegsColor === 0) {
-                    document.getElementById('legs-color-left').style.display="none";
-                }
-                document.getElementById('legs-color-right').style.display="inline-block";
-            }
-            else {
-                if (currentLegsColor === legsColor.length-1) {
-                    document.getElementById('legs-color-right').style.display="none";
-                }
-                document.getElementById('legs-color-left').style.display="inline-block";
-            }
-        }
-        else if (change === 'Type') {
-            if(direction === 'left') {
-                if(currentLegsType === 0) {
-                    document.getElementById('legs-type-left').style.display="none";
-                }
-                document.getElementById('legs-type-right').style.display="inline-block";
-            }
-            else {
-                if(currentLegsType === legsType.length-1) {
-                    document.getElementById('legs-type-right').style.display="none";
-                }
-                document.getElementById('legs-type-left').style.display="inline-block";
-            }
-        }
-    }
-    if(object === 'Skin') {
-        if(direction === 'left') {
-            if(currentSkinColor === 0) {
-                document.getElementById('skin-color-left').style.display="none";
-            }
-            document.getElementById('skin-color-right').style.display="inline-block";
-        }
-        else {
-            if (currentSkinColor === skinColor.length-1) {
-                document.getElementById('skin-color-right').style.display="none";
-            }
-            document.getElementById('skin-color-left').style.display="inline-block";
-        }
-    }
-    if(object === 'All') {
-        if(currentHeadColor === 0) {
-            document.getElementById('head-color-left').style.display="none";
-        }
-        else {
-            document.getElementById('head-color-left').style.display="inline-block";
-        }
-        if (currentHeadColor === headColor.length-1) {
-            document.getElementById('head-color-right').style.display="none";
-        }
-        else {
-            document.getElementById('head-color-right').style.display="inline-block";
-        }
-        if(currentHeadType === 0) {
-            document.getElementById('head-type-left').style.display="none";
-        }
-        else {
-            document.getElementById('head-type-left').style.display="inline-block";
-        }
-        if(currentHeadType === headType.length-1) {
-            document.getElementById('head-type-right').style.display="none";
-        }
-        else {
-            document.getElementById('head-type-right').style.display="inline-block";
-        }
-        
-        if(currentChestColor === 0) {
-            document.getElementById('chest-color-left').style.display="none";
-        }
-        else {
-            document.getElementById('chest-color-left').style.display="inline-block";
-        }
-        if (currentChestColor === chestColor.length-1) {
-            document.getElementById('chest-color-right').style.display="none";
-        }
-        else {
-            document.getElementById('chest-color-right').style.display="inline-block";
-        }
-        if(currentChestType === 0) {
-            document.getElementById('chest-type-left').style.display="none";
-        }
-        else {
-            document.getElementById('chest-type-left').style.display="inline-block";
-        }
-        if(currentChestType === chestType.length-1) {
-            document.getElementById('chest-type-right').style.display="none";
-        }
-        else {
-            document.getElementById('chest-type-right').style.display="inline-block";
-        }
-        
-        if(currentLegsColor === 0) {
-            document.getElementById('legs-color-left').style.display="none";
-        }
-        else {
-            document.getElementById('legs-color-left').style.display="inline-block";
-        }
-        if (currentLegsColor === legsColor.length-1) {
-            document.getElementById('legs-color-right').style.display="none";
-        }
-        else {
-            document.getElementById('legs-color-right').style.display="inline-block";
-        }
-        if(currentLegsType === 0) {
-            document.getElementById('legs-type-left').style.display="none";
-        }
-        else {
-            document.getElementById('legs-type-left').style.display="inline-block";
-        }
-        if(currentLegsType === legsType.length-1) {
-            document.getElementById('legs-type-right').style.display="none";
-        }
-        else {
-            document.getElementById('legs-type-right').style.display="inline-block";
-        }
-        
-        if(currentSkinColor === 0) {
-            document.getElementById('skin-color-left').style.display="none";
-        }
-        else {
-            document.getElementById('skin-color-left').style.display="inline-block";
-        }
-        if (currentSkinColor === skinColor.length-1) {
-            document.getElementById('skin-color-right').style.display="none";
-        }
-        else {
-            document.getElementById('skin-color-right').style.display="inline-block";
-        }
-    }
-}
- 
 function random() {
     currentHeadType = getRandomInt(0, headType.length-1);
     currentChestType = getRandomInt(0, chestType.length-1);
@@ -249,7 +52,6 @@ function random() {
     currentSkinColor = getRandomInt(0, skinColor.length-1);
     
     assignSource();
-    boundaryCheck('All', null, null);
 }
 
 function getRandomInt(min, max) {
