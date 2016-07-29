@@ -2,6 +2,10 @@ p {
     margin: 0;
 }
 
+button {
+    width: 75px;
+}
+
 #page-wrapper {
     width: 1000px;
     margin: 0 auto;
@@ -21,8 +25,8 @@ p {
     clear: both;
 }
 
-#chest, #legs {
-    margin-top: -5px;
+#chest-img, #legs-img {
+    margin-top: -7px;
 }
 
 .left {

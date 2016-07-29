@@ -41,9 +41,21 @@
                 </div>
             </div>
             <div id="character">
-                <img id="head" src="sprites/head/1-blonde-1.png"><br>
-                <img id="chest" src="sprites/chest/1-white-1.png"><br>
-                <img id="legs" src="sprites/legs/1-blue-1.png"><br>
+                <div id="head">
+                    <button class="left" id="head-type-left" onclick="change('Head', 'Type', 'left')">Left</button>
+                    <button class="right" id="head-type-right" onclick="change('Head', 'Type', 'right')">Right</button>
+                    <img id="head-img" src="sprites/head/1-blonde-1.png"><br>
+                </div>
+                <div id="chest">
+                    <button class="left" id="chest-type-left" onclick="change('Chest', 'Type', 'left')">Left</button>
+                    <button class="right" id="chest-type-right" onclick="change('Chest', 'Type', 'right')">Right</button>
+                    <img id="chest-img" src="sprites/chest/1-white-1.png"><br>
+                </div>
+                <div id="legs">
+                    <button class="left" id="legs-type-left" onclick="change('Legs', 'Type', 'left')">Left</button>
+                    <button class="right" id="legs-type-right" onclick="change('Legs', 'Type', 'right')">Right</button>
+                    <img id="legs-img" src="sprites/legs/1-blue-1.png"><br>
+                </div>
             </div>
         </div>
         <script src="js/main.js"></script>
