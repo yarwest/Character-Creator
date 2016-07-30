@@ -26,8 +26,12 @@ button {
     margin: 5px;
 }
 
-#color-button div p {
+.tag {
     width: 80px;
+}
+
+#extra-buttons {
+    margin-left: 87.5px !important;
 }
 
 #character {
