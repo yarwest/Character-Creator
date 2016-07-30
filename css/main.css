@@ -12,23 +12,30 @@ button {
     text-align: center;
 }
 
-#color-buttons div button, #color-buttons div p {
-    float: left;
-    margin: 5px;
+#color-buttons {
+    width: 300px;
+    margin-top: 50px;
 }
 
 #color-buttons div {
     clear: both;
 }
 
+#color-buttons div button, #color-buttons div p {
+    float: left;
+    margin: 5px;
+}
+
+#color-button div p {
+    width: 80px;
+}
+
 #character {
-    clear: both;
+    margin-left: 300px;
+    width: 300px;
+    margin-top: -125px;
 }
 
 #chest-img, #legs-img {
     margin-top: -7px;
-}
-
-.left {
-    
 }
