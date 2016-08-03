@@ -1,4 +1,5 @@
-var headColor = ['blonde', 'brown', 'black'],
+var /* Store all the variations */
+    headColor = ['blonde', 'brown', 'black'],
     chestColor = ['white', 'black', 'yellow'],
     legsColor = ['blue', 'grey', 'green'],
     skinColor = ['1', '2'],
@@ -7,6 +8,7 @@ var headColor = ['blonde', 'brown', 'black'],
     chestType = ['1', '2'],
     legsType = ['1', '2'],
     
+    /* Store the current selected variation */
     currentHeadColor = 0,
     currentChestColor = 0,
     currentLegsColor = 0,
@@ -15,16 +17,21 @@ var headColor = ['blonde', 'brown', 'black'],
     currentHeadType = 0,
     currentChestType = 0,
     currentLegsType = 0,
-
+    
+    /* All existing parts */
     bodyParts = ['head', 'chest', 'legs'],
     nBodyParts = bodyParts.length;
 
+/* Function that assigns the src for every available body part */
 function assignSource () {
     for(var i = 0; i < nBodyParts; i++) {
         eval("document.getElementById('" + bodyParts[i] + "-img').src='sprites/" + bodyParts[i] + "/' + " +  bodyParts[i] + "Type[current" + uppercaseFirstChar(bodyParts[i]) + "Type] + '-' + " + bodyParts[i] + "Color[current" + uppercaseFirstChar(bodyParts[i]) + "Color] + '-' + skinColor[currentSkinColor] + '.png';");
     }
 }
 
+/* Function changes the current value of the variant that is passed as parameter
+   If the current value is at either end of the array, the value will be set to the opposite end
+   Then either the assignSource function gets called or the src for a certain body part gets assigned*/
 function change(object, change, direction) {
     var type = '', color = '', skin = '',
         lowcaseObject = object.toLowerCase(),
@@ -45,6 +52,8 @@ function change(object, change, direction) {
     }
 }
 
+/* A function that calls the random function for every body part and the skin color 
+   After getting all the random values, the assingSource function gets called*/
 function random() {
     for(var i = 0; i < nBodyParts; i++) {
         eval("current" + uppercaseFirstChar(bodyParts[i]) + "Type = getRandomInt(0, " + bodyParts[i] + "Type.length-1); current" + uppercaseFirstChar(bodyParts[i]) + "Color = getRandomInt(0, " + bodyParts[i] + "Color.length-1);")
@@ -54,14 +63,17 @@ function random() {
     assignSource();
 }
 
+//TODO
 function save() {
         
 }
 
+/* Function that returns the param string as a string with the first char capitalized */
 function uppercaseFirstChar(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+/* Function that returns a random int withing the min and max value that are passed as a parameter */
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
