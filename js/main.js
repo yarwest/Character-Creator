@@ -20,12 +20,28 @@ var /* Store all the variations */
     
     /* All existing parts */
     bodyParts = ['head', 'chest', 'legs'],
-    nBodyParts = bodyParts.length;
+    nBodyParts = bodyParts.length,
+
+    /* Canvas vars */
+    canvas = document.getElementById('characterCanvas'),
+    context = canvas.getContext('2d');
 
 /* Function that assigns the src for every available body part */
 function assignSource () {
     for(var i = 0; i < nBodyParts; i++) {
         eval("document.getElementById('" + bodyParts[i] + "-img').src='sprites/" + bodyParts[i] + "/' + " +  bodyParts[i] + "Type[current" + uppercaseFirstChar(bodyParts[i]) + "Type] + '-' + " + bodyParts[i] + "Color[current" + uppercaseFirstChar(bodyParts[i]) + "Color] + '-' + skinColor[currentSkinColor] + '.png';");
+    }
+    updateCanvas();
+}
+
+function updateCanvas() {
+    var sizes = [72, 32, 48];
+    for(var i = 0; i < nBodyParts; i++) {
+        var image = new Image();
+        image.src = eval("'sprites/" + bodyParts[i] + "/' + " +  bodyParts[i] + "Type[current" + uppercaseFirstChar(bodyParts[i]) + "Type] + '-' + " + bodyParts[i] + "Color[current" + uppercaseFirstChar(bodyParts[i]) + "Color] + '-' + skinColor[currentSkinColor] + '.png'");
+        image.onload = function() {
+            context.drawImage(image, 72, sizes[i]);
+        };
     }
 }
 
@@ -50,6 +66,7 @@ function change(object, change, direction) {
         skin = skinColor[currentSkinColor];
         document.getElementById(lowcaseObject + '-img').src='sprites/' + lowcaseObject + '/' + type + '-' + color + '-' + skin + '.png';
     }
+    updateCanvas();
 }
 
 /* A function that calls the random function for every body part and the skin color 
